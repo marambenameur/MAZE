@@ -1,27 +1,30 @@
-#include "background.h"
+#include "main.h"
 
-int main()
+
+void afficher_background(backgr *bg)
 {
-Background B;
-int continuer=1;
-SDL_Event event;
-int n;
-SDL_Init(SDL_INIT_VIDEO);
-//fenetre principale
-SDL_Surface *screen=NULL;
-screen=SDL_SetVideoMode (1000,600,0,SDL_HWSURFACE|SDL_DOUBLEBUF);
-SDL_WM_SetCaption("123",NULL);//titre de la fenetre
-
-
-while(continuer)
-{
-	
-AfficherBackground(screen,&B,n);
-
-SDL_WaitEvent(&event);
-	if(event.type==SDL_QUIT)
-	{
-		continuer=0;
-	}
+bg->pos.x=0;
+bg->pos.y=0;
+image=IMG_Load("65.png");
+SDL_BlitSurface(image,NULL,ecran,&bg->pos);
 }
+
+void afficher_background1(backgr *bg1)
+{
+bg1->pos.x=650;
+bg1->pos.y=0;
+image=IMG_Load("65.png");
+SDL_BlitSurface(image,NULL,ecran,&bg1->pos);
+}
+
+int main(int argc, char *argv[])
+{
+SDL_Init(SDL_INIT_EVERYTHING);
+ecran=SDL_SetVideoMode(1300,100,32,SDL_HWSURFACE);
+backgr bg;
+backgr bg1;
+afficher_background(&bg);
+afficher_background1(&bg1);
+SDL_Flip(ecran);
+pause();
 }
