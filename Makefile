@@ -1,6 +1,6 @@
-prog:main.o background.o
-	gcc main.o background.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -o prog
-main.o:main.c
-	gcc main.c -c -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer
-gggggg.o:background.c
-	gcc background.c -c -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer
+prog: enigme.o main.o
+	gcc enigme.o main.o -o prog -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -g
+main.o: main.c
+	gcc -c main.c -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -g
+enigme.o: enigme.c
+	gcc -c enigme.c -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -g 
